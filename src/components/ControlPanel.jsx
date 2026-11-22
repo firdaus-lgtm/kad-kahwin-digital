@@ -36,6 +36,24 @@ const TEMPLATES = [
     desc: 'Lembut • Pink, Sage & Skrip',
     swatches: ['#fdf2f5', '#9d5c6c', '#5c7361'],
   },
+  {
+    id: 'botanical',
+    name: 'Rustic Botanical',
+    desc: 'Alam • Zaitun, Krim & Serif Klasik',
+    swatches: ['#3a4a24', '#8fa368', '#f9f7f0'],
+  },
+  {
+    id: 'midnight',
+    name: 'Midnight Elegance',
+    desc: 'Eksklusif • Biru Gelap, Emas & Sans',
+    swatches: ['#0b132b', '#d4af37', '#cbd5e1'],
+  },
+  {
+    id: 'terracotta',
+    name: 'Terracotta Boho',
+    desc: 'Bohemian • Oren Bata, Pasir & Serif',
+    swatches: ['#b85035', '#dfc3ab', '#fbf6f0'],
+  },
 ]
 
 export default function ControlPanel({
@@ -90,11 +108,29 @@ export default function ControlPanel({
               <span>1. Pilih Templat Kad</span>
             </h2>
             <span className="rounded-full bg-stone-100 px-2.5 py-0.5 text-[11px] font-medium text-stone-600">
-              3 Gaya
+              {TEMPLATES.length} Gaya
             </span>
           </div>
 
-          <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-3 lg:grid-cols-1">
+          <div className="mb-3">
+            <label htmlFor="template-select-dropdown" className="sr-only">
+              Pilih Templat Kad
+            </label>
+            <select
+              id="template-select-dropdown"
+              value={selectedTemplate}
+              onChange={(e) => onSelectTemplate(e.target.value)}
+              className="w-full rounded-xl border border-stone-300 bg-stone-50 px-3 py-2.5 text-sm font-semibold text-stone-900 transition outline-none focus:border-stone-900 focus:ring-2 focus:ring-stone-900/10"
+            >
+              {TEMPLATES.map((tpl) => (
+                <option key={tpl.id} value={tpl.id}>
+                  {tpl.name} — {tpl.desc}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-1">
             {TEMPLATES.map((tpl) => {
               const active = selectedTemplate === tpl.id
               return (

@@ -2,11 +2,17 @@ import { Eye, Lock, MailOpen, Music, Pause, Play, Smartphone, Download } from 'l
 import TemplateRoyal from './templates/TemplateRoyal'
 import TemplateMinimal from './templates/TemplateMinimal'
 import TemplateFloral from './templates/TemplateFloral'
+import TemplateBotanical from './templates/TemplateBotanical'
+import TemplateMidnight from './templates/TemplateMidnight'
+import TemplateTerracotta from './templates/TemplateTerracotta'
 
 const TEMPLATE_LABELS = {
   royal: 'Royal Burgundy',
   minimal: 'Modern Minimalist',
   floral: 'Floral Pastel',
+  botanical: 'Rustic Botanical',
+  midnight: 'Midnight Elegance',
+  terracotta: 'Terracotta Boho',
 }
 
 export default function PreviewPanel({
@@ -35,6 +41,12 @@ export default function PreviewPanel({
         return <TemplateMinimal {...props} />
       case 'floral':
         return <TemplateFloral {...props} />
+      case 'botanical':
+        return <TemplateBotanical {...props} />
+      case 'midnight':
+        return <TemplateMidnight {...props} />
+      case 'terracotta':
+        return <TemplateTerracotta {...props} />
       case 'royal':
       default:
         return <TemplateRoyal {...props} />
